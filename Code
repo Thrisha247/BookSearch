@@ -1,0 +1,48 @@
+import java.util.*;
+
+class Book {
+    private String title;
+    private String author;
+
+  
+    public Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+    }
+
+    // Getter
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+}
+
+public class BookSearch {
+    
+   
+    public static Book searchBookByTitle(List<Book> books, String title) {
+        for (Book book : books) {
+            if (book.getTitle().equalsIgnoreCase(title)) {
+                return book;
+            }
+        }
+        return null; 
+    }
+
+    public static void main(String[] args) {
+        List<Book> books = new ArrayList<>();
+        books.add(new Book("Harry Potter", "J.K. Rowling"));
+        books.add(new Book("The Hobbit", "J.R.R. Tolkien"));
+        books.add(new Book("Pride and Prejudice", "Jane Austen"));
+
+        Book found = searchBookByTitle(books, "The Hobbit");
+        if (found != null) {
+            System.out.println("Found: " + found.getTitle() + " by " + found.getAuthor());
+        } else {
+            System.out.println("Book not found!");
+        }
+    }
+}
